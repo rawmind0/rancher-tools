@@ -1,0 +1,1 @@
+docker build -t rawmind/rancher-tools:$(cat version) .
