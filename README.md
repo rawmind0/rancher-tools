@@ -1,12 +1,12 @@
 rancher-tools
 =============
 
-A base image to expose tools to services. It's based in alpine-tools, adding confd and monit scripts to the image.
+A base image to expose tools to services. It's based in [rawmind/alpine-tools][alpine-tools], adding confd and monit scripts to the image.
 
 ##Build
 
 ```
-docker build -t <repo>/rancher-tools:<version> .
+docker build -t rancher-tools/rancher-tools:<version> .
 ```
 
 ## Tools volume
@@ -38,9 +38,25 @@ Starting from `rawmind/rancher-tools` provides you with the ability to easily ge
 
 This image has to be started once as a sidekick of your service (based in alpine-monit), exporting a /opt/tools volume to it. It adds monit conf.d to start confd with a default parameters, that you can overwrite with environment variables.
 
+## Default parameters
+
+These are the default parameters to run confd. You could overwrite these values, setting environment variables.
+
+- CONF_NAME=confd
+- CONF_HOME=${CONF_HOME:-"/opt/tools/confd"}
+- CONF_LOG=${CONF_LOG:-"${CONF_HOME}/log/confd.log"}
+- CONF_BIN=${CONF_BIN:-"${CONF_HOME}/bin/confd"}
+- CONF_BACKEND=${CONF_BACKEND:-"rancher"}
+- CONF_PREFIX=${CONF_PREFIX:-"/2015-12-19"}
+- CONF_INTERVAL=${CONF_INTERVAL:-60}
+- CONF_PARAMS=${CONF_PARAMS:-"-confdir /opt/tools/confd/etc -backend ${CONF_BACKEND} -prefix ${CONF_PREFIX}"}
+- CONF_ONETIME="${CONF_BIN} -onetime ${CONF_PARAMS}"
+- CONF_INTERVAL="${CONF_BIN} -interval ${CONF_INTERVAL} ${CONF_PARAMS}"
+
 
 ## Examples
 
-An example of using this image can be found in the [rawmind/alpine-zk][alpine-zk].
+An example of using this image can be found in the [rawmind/rancher-traefik][rancher-traefik].
 
-[confd]: http://www.confd.io/
+[rancher-traefik]: https://github.com/rawmind0/rancher-traefik
+[alpine-tools]: https://github.com/rawmind0/alpine-tools
