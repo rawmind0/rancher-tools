@@ -60,3 +60,40 @@ An example of using this image can be found in the [rawmind/rancher-traefik][ran
 
 [rancher-traefik]: https://github.com/rawmind0/rancher-traefik
 [alpine-tools]: https://github.com/rawmind0/alpine-tools
+
+
+
+
+
+
+
+Many thanks for explaining how the stock options work. 
+I am very interested to find out more about your organization and opportunities.
+
+Normally compensation is something we would discuss later on but I understand
+your need to have a reference or starting point.
+
+Just for your information and in total confidentiality my current income 
+equals 75K EU/year gross plus my 20% bonus based on individual performance and 
+company variable calculations.
+This is a unique sector and last year based on my individual performance
+I got a 139% bonus of that 20%. This was a good year and might not happen every
+year.
+
+Discussing compensation is important to me like anybody else but there 
+are other things that are equally important. When considering new 
+opportunities compensation has not been the only determining factor for me.
+
+So far I love everything I am learning about Rancher, both technically and
+as an organization and I would love to learn more so anything you can share about the 
+team, organization, products, services,  and job specifics is something it would 
+be greatly appreciated.
+
+I am customer focused, business driven and love technology working in growth and 
+innovation all within a modern and efficient team culture. 
+
+I am telling you this because I want to make sure I know more about the job and 
+you also know more about me so we can make sure this is going to work well for 
+everyone.  
+
+Your thoughts?
