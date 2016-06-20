@@ -49,7 +49,7 @@ These are the default parameters to run confd. You could overwrite these values,
 - CONF_BACKEND=${CONF_BACKEND:-"rancher"}
 - CONF_PREFIX=${CONF_PREFIX:-"/2015-12-19"}
 - CONF_INTERVAL=${CONF_INTERVAL:-60}
-- CONF_PARAMS=${CONF_PARAMS:-"-confdir /opt/tools/confd/etc -backend ${CONF_BACKEND} -prefix ${CONF_PREFIX}"}
+- CONF_PARAMS=${CONF_PARAMS:-"-confdir ${CONF_HOME}/etc -backend ${CONF_BACKEND} -prefix ${CONF_PREFIX}"}
 - CONF_ONETIME="${CONF_BIN} -onetime ${CONF_PARAMS}"
 - CONF_INTERVAL="${CONF_BIN} -interval ${CONF_INTERVAL} ${CONF_PARAMS}"
 
