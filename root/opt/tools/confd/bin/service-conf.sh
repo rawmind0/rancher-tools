@@ -25,6 +25,7 @@ function checkNetwork {
 }
 
 function serviceStart {
+    checkNetwork
     log "[ Starting ${CONF_NAME}... ]"
     /usr/bin/nohup ${CONF_INTERVAL} > ${CONF_HOME}/log/confd.log 2>&1 &
 }
@@ -36,8 +37,7 @@ function serviceStop {
 
 function serviceRestart {
     log "[ Restarting ${CONF_NAME}... ]"
-    serviceStop
-    checkNetwork 
+    serviceStop 
     serviceStart
     /opt/monit/bin/monit reload
 }
