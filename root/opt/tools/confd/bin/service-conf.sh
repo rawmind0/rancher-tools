@@ -16,10 +16,10 @@ function checkNetwork {
     done
 
     log "[ Checking container connectivity... ]"
-    b="`ping -c 1 rancher-metadata &> /dev/null; echo $?`"
+    b="`fping -c 1 rancher-metadata.rancher.internal &> /dev/null; echo $?`"
     while [ $b -eq 1 ]; 
     do
-        b="`ping -c 1 rancher-metadata &> /dev/null; echo $?`"
+        b="`fping -c 1 rancher-metadata.rancher.internal &> /dev/null; echo $?`"
         sleep 1 
     done
 }
@@ -39,6 +39,7 @@ function serviceRestart {
     serviceStop
     checkNetwork 
     serviceStart
+    /opt/monit/bin/monit reload
 }
 
 CONF_NAME=confd
