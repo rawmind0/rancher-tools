@@ -1,4 +1,4 @@
-FROM rawmind/alpine-tools:0.3.4-7
+FROM rawmind/alpine-tools:3.5-1
 MAINTAINER Raul Sanchez <rawmind@gmail.com>
 
 ENV SERVICE_ARCHIVE=/opt/rancher-tools.tgz \
