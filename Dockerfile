@@ -12,7 +12,7 @@ ADD root /
 RUN apk add --no-cache go git musl-dev && \
     mkdir -p ${SERVICE_VOLUME}/scripts; cd /opt/src && \
     go get && \
-    CGO_ENABLED=0 go build -v -installsuffix cgo -ldflags '-extld ld -extldflags -static' -a -x get_rancher_certificates.go && \
+    go build -o get_rancher_certificates.go && \
     mv ./get_rancher_certificates ${SERVICE_VOLUME}/scripts/ && \
     chmod 755 ${SERVICE_VOLUME}/scripts/get_rancher_certificates && \
     cd ${SERVICE_VOLUME} && \
