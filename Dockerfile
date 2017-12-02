@@ -6,8 +6,8 @@ ENV SERVICE_ARCHIVE=/opt/rancher-tools.tgz \
     GOROOT=/usr/lib/go \
     GOPATH=/opt/src \
     GOBIN=/gopath/bin \
-    RANCHER_METADATA_VERSION=0.2 \
-    RANCHER_METADATA_REPO=https://github.com/rawmind0/rancher-metadata.git
+    RANCHER_TEMPLATE_VERSION=0.2 \
+    RANCHER_TEMPLATE_REPO=https://github.com/rawmind0/rancher-template.git
 
 # Add files
 ADD root /
@@ -17,7 +17,7 @@ RUN apk add --no-cache go git musl-dev && \
       ${SERVICE_VOLUME}/rancher-template/bin \
       ${SERVICE_VOLUME}/rancher-template/tmpl && \
     cd /opt/src && \
-    git clone -b ${RANCHER_METADATA_VERSION} ${RANCHER_METADATA_REPO} && \
+    git clone -b ${RANCHER_TEMPLATE_VERSION} ${RANCHER_TEMPLATE_REPO} && \
     cd rancher-metadata && \
     go get && \
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o rancher-template && \
