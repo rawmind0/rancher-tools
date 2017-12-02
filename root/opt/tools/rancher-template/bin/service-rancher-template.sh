@@ -3,7 +3,7 @@
 set -e
 
 function log {
-        echo `date` $ME - $@ >> ${CONF_LOG}
+        echo `date` $ME - $@ 
 }
 
 function checkNetwork {
@@ -27,12 +27,13 @@ function checkNetwork {
 function serviceStart {
     checkNetwork
     log "[ Starting ${CONF_NAME}... ]"
-    /usr/bin/nohup ${CONF_INTERVAL} > ${CONF_HOME}/log/confd.log 2>&1 &
+    /usr/bin/nohup ${CONF_BIN} &
+    echo $! > ${CONF_HOME}/${CONF_NAME}.pid
 }
 
 function serviceStop {
     log "[ Stoping ${CONF_NAME}... ]"
-    /usr/bin/killall confd
+    kill `cat ${CONF_HOME}/${CONF_NAME}.pid`
 }
 
 function serviceRestart {
@@ -42,16 +43,9 @@ function serviceRestart {
     /opt/monit/bin/monit reload
 }
 
-CONF_NAME=confd
-CONF_HOME=${CONF_HOME:-"/opt/tools/confd"}
-CONF_LOG=${CONF_LOG:-"${CONF_HOME}/log/confd.log"}
-CONF_BIN=${CONF_BIN:-"${CONF_HOME}/bin/confd"}
-CONF_BACKEND=${CONF_BACKEND:-"rancher"}
-CONF_PREFIX=${CONF_PREFIX:-"/2015-12-19"}
-CONF_INTERVAL=${CONF_INTERVAL:-60}
-CONF_PARAMS=${CONF_PARAMS:-"-confdir /opt/tools/confd/etc -backend ${CONF_BACKEND} -prefix ${CONF_PREFIX}"}
-CONF_ONETIME="${CONF_BIN} -onetime ${CONF_PARAMS}"
-CONF_INTERVAL="${CONF_BIN} -interval ${CONF_INTERVAL} ${CONF_PARAMS}"
+CONF_NAME=rancher-template
+CONF_HOME=${CONF_HOME:-"/opt/tools/rancher-template"}
+CONF_BIN=${CONF_BIN:-"${CONF_HOME}/rancher-template"}
 
 case "$1" in
         "start")
