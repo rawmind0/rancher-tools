@@ -21,8 +21,8 @@ RUN apk add --no-cache go git musl-dev && \
     cd rancher-metadata && \
     go get && \
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o rancher-template && \
-    chmod 755 rancher-template && \
     mv rancher-template ${SERVICE_VOLUME}/rancher-template/bin/ && \
+    chmod 755 ${SERVICE_VOLUME}/rancher-template/bin/* && \
     cd ${SERVICE_VOLUME} && \
     tar czvf ${SERVICE_ARCHIVE} * && \
     apk del go git musl-dev && \
