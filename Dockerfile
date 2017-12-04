@@ -18,7 +18,7 @@ RUN apk add --no-cache go git musl-dev && \
       ${SERVICE_VOLUME}/rancher-template/tmpl && \
     cd /opt/src && \
     git clone -b ${RANCHER_TEMPLATE_VERSION} ${RANCHER_TEMPLATE_REPO} && \
-    cd rancher-metadata && \
+    cd rancher-template && \
     go get && \
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o rancher-template && \
     mv rancher-template ${SERVICE_VOLUME}/rancher-template/bin/ && \
