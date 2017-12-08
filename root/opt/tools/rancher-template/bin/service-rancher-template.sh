@@ -3,7 +3,7 @@
 set -e
 
 function log {
-        echo `date` $ME - $@ 
+        echo `date` $ME - $@ >> ${CONF_LOG}
 }
 
 function checkNetwork {
@@ -27,7 +27,7 @@ function checkNetwork {
 function serviceStart {
     checkNetwork
     log "[ Starting ${CONF_NAME}... ]"
-    /usr/bin/nohup ${CONF_BIN} &
+    /usr/bin/nohup ${CONF_BIN} -logfile ${CONF_LOG} &
     echo $! > ${CONF_HOME}/${CONF_NAME}.pid
 }
 
@@ -45,7 +45,8 @@ function serviceRestart {
 
 CONF_NAME=rancher-template
 CONF_HOME=${CONF_HOME:-"/opt/tools/rancher-template"}
-CONF_BIN=${CONF_BIN:-"${CONF_HOME}/rancher-template"}
+CONF_BIN=${CONF_BIN:-${CONF_HOME}"/bin/rancher-template"}
+CONF_LOG=${CONF_LOG:-"/proc/1/fd/1"}
 
 case "$1" in
         "start")
