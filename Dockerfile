@@ -6,7 +6,7 @@ ENV SERVICE_ARCHIVE=/opt/rancher-tools.tgz \
     GOROOT=/usr/lib/go \
     GOPATH=/opt/src \
     GOBIN=/gopath/bin \
-    RANCHER_TEMPLATE_VERSION=0.3 \
+    RANCHER_TEMPLATE_VERSION=0.3-1 \
     RANCHER_TEMPLATE_REPO=https://github.com/rawmind0/rancher-template.git
 
 # Add files
@@ -15,6 +15,7 @@ RUN apk add --no-cache go git musl-dev && \
     mkdir -p /opt/src \
       ${SERVICE_VOLUME}/rancher-template/etc \
       ${SERVICE_VOLUME}/rancher-template/bin \
+      ${SERVICE_VOLUME}/rancher-template/log \
       ${SERVICE_VOLUME}/rancher-template/tmpl && \
     cd /opt/src && \
     git clone -b ${RANCHER_TEMPLATE_VERSION} ${RANCHER_TEMPLATE_REPO} && \
