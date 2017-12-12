@@ -27,7 +27,7 @@ function checkNetwork {
 function serviceStart {
     checkNetwork
     log "[ Starting ${CONF_NAME}... ]"
-    /usr/bin/nohup ${CONF_BIN} -logfile ${CONF_LOG} &
+    /usr/bin/nohup ${CONF_BIN} &
     echo $! > ${CONF_HOME}/${CONF_NAME}.pid
 }
 
