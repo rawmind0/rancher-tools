@@ -31,6 +31,7 @@ That volume has the following structure:
 
 ## Versions
 
+- `3.7-0` [(Dockerfile)](https://github.com/rawmind0/rancher-tools/blob/3.7-0/Dockerfile)
 - `3.6-7` [(Dockerfile)](https://github.com/rawmind0/rancher-tools/blob/3.6-7/Dockerfile)
 - `3.5-4` [(Dockerfile)](https://github.com/rawmind0/rancher-tools/blob/3.5-4/Dockerfile)
 - `0.3.4-7` [(Dockerfile)](https://github.com/rawmind0/rancher-tools/blob/0.3.4-7/Dockerfile)
